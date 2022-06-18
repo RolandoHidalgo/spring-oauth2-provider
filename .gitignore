@@ -1,0 +1,48 @@
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+*.log
+.vscode/
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+### properties ###
+#sigip-ipc/src/main/resources/application.yml
+oauth2-server/src/main/resources/application-dev.properties
+#sigip-base/src/main/resources/application-dev.properties
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+base-integration/target/
+
+config-server/
+logs/sigpipc.log.2019-11-22.0.gz
+logs/sigpipc.log.2019-11-23.0.gz
+logs/sigpipc.log.2019-11-24.0.gz
+logs/sigpipc.log.2019-11-25.0.gz
+logs/sigpipc.log.2019-11-27.0.gz
+logs/sigpipc.log.2019-11-28.0612336316213353.tmp
+logs/sigpipc.log.2019-11-29.0.gz
+logs/*
+src/main/resources/graphql/.graphqlconfig
+src/main/resources/graphql/schema.graphql
+
+/sigip-audit/target/
+/sigip-audit/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+/sigip-audit/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+/sigip-audit/target/generated-sources/annotations/cu/uci/cegel/audit/entity/QATrace.java
