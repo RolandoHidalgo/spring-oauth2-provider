@@ -9,10 +9,13 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
 import javax.net.ssl.HostnameVerifier;
@@ -20,7 +23,9 @@ import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLSession;
 import javax.servlet.http.HttpServletRequest;
 
+
 @Configuration
+@EnableWebSecurity
 public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService userDetailsService;
@@ -58,11 +63,14 @@ public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
 //        });
 
         http
-                .requestMatcher(new OAuthRequestedMatcher())
-                .anonymous().disable()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+                .and()
                 .authorizeRequests()
                 .anyRequest().authenticated()
-                .antMatchers(HttpMethod.POST, "/onei/logout").permitAll();
+                .antMatchers(HttpMethod.POST, "/onei/logout").permitAll()
+                .and()
+                .formLogin().permitAll();
+        System.out.println("asdasd!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     }
 
     @Bean
